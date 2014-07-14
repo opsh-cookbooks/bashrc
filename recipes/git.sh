@@ -12,9 +12,7 @@ echo "not yet"; exit 1
 esac
 
 
-block_append 'if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi' $profile
+block_append '[ -f ~/.bash_aliases ] && . ~/.bash_aliases' $profile
 
 alias=~/.bash_aliases
 [ -f $alias ] || touch $alias
