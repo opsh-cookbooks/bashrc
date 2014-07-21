@@ -19,6 +19,7 @@
 $sudo block_insert "PermitUserEnvironment yes" /etc/ssh/sshd_config
 
 log_path=/var/log/bash_history
+
 set_permission() {
   mkdir $log_path
   chmod 0777 $log_path
@@ -28,5 +29,8 @@ set_permission() {
 
 #todo: check exist and permission
 
-template_cp "bash_log.sh" ~/.bash_log
-block_append "[ -f ~/.bash_log ] && . ~/.bash_log" ~/.bashrc
+template_cp "bash_setlog.sh" ~/.bash_setlog
+
+#display date of history in ISO 8601
+block_append 'export HISTTIMEFORMAT="%FT%T%z "' ~/.bashrc
+block_append "[ -f ~/.bash_setlog ] && . ~/.bash_setlog" ~/.bashrc
