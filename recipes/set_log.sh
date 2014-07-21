@@ -33,4 +33,6 @@ template_cp "bash_setlog.sh" ~/.bash_setlog
 
 #display date of history in ISO 8601
 block_append 'export HISTTIMEFORMAT="%FT%T%z "' ~/.bashrc
-block_append "[ -f ~/.bash_setlog ] && . ~/.bash_setlog" ~/.bashrc
+block_append 'export HISTIGNORE="&:ls:[bf]g:exit"' ~/.bashrc
+
+block_append '[ -f ~/.bash_setlog ] && . ~/.bash_setlog' ~/.bashrc
