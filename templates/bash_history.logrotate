@@ -5,12 +5,10 @@
     rotate 24
     copytruncate
     prerotate
-        chattr -R -a /var/log/bash_history   
-	#chmod 0755 /var/log/bash_history
+        chattr -a /var/log/bash_history/*
     endscript
     postrotate
-	#chmod 0757 /var/log/bash_history
-        chattr -R +a /var/log/bash_history   
+        chattr +a /var/log/bash_history/*.log
     endscript
     su root
 }
