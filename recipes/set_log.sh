@@ -1,10 +1,5 @@
 #
 
-
-#for current user
-
-
-
 #1.
 #PermitUserEnvironment yes
 
@@ -13,9 +8,8 @@
 #environment="SSH_USER=USER1" ssh-rsa AAAAfgds...
 #environment="SSH_USER=USER2" ssh-rsa AAAAukde..
 
-#prepare log directory
 
-global=true
+global="true"
 log_path=/var/log/bash_history
 
 #make sure enable environment
