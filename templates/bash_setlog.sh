@@ -10,6 +10,9 @@ export HISTIGNORE="&:ls:[bf]g:exit[ ]:history[ ]"
 if [ "$SSH_USER" != "" ]; then
   readonly HISTFILE="/var/log/bash_history/${SSH_USER}_history.log"
   [ ! -f $HISTFILE ] && touch $HISTFILE
+elif [ "$USER" != "" ]; then
+  readonly HISTFILE="/var/log/bash_history/system_${USER}_history.log"
+  [ ! -f $HISTFILE ] && touch $HISTFILE
 fi
 
 #write to log, refresh
