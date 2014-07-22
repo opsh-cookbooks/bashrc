@@ -24,7 +24,7 @@ set_permission() {
 [ ! -d $log_path ] && $sudo set_permission
 
 
-if [ "global" == "true" ]; then
+if [ "$global" == "true" ]; then
     template_cp "bash_history.logrotate" /etc/logrotate.d/bash_history
     template_cp "bash_setlog.sh" /etc/bash.setlog
     block_append '[ -f /etc/bash.setlog ] && . /etc/bash.setlog' /etc/bash.bashrc
