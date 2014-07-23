@@ -7,10 +7,10 @@ export HISTTIMEFORMAT="%FT%T%z "
 export HISTIGNORE="&:ls:[bf]g:exit[ ]:history[ ]"
 
 #change log file path if SSH_USER exists
-if [ "$SSH_USER" != "" ]; then
-  readonly HISTFILE="/var/log/bash_history/${SSH_USER}_history.log"
+if [[ "$SSH_USER" != "" && "$USER" != "" ]]; then
+  readonly HISTFILE="/var/log/bash_history/${SSH_USER}_${USER}_history.log"
   [ ! -f $HISTFILE ] && touch $HISTFILE
-elif [ "$USER" != "" ]; then
+elif [[ "$USER" != "" ]]; then
   readonly HISTFILE="/var/log/bash_history/system_${USER}_history.log"
   [ ! -f $HISTFILE ] && touch $HISTFILE
 fi
