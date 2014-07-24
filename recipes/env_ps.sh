@@ -18,9 +18,11 @@ fi
 case "${node[os]}" in
 osx)
   profile=${homepath}/.bash_profile
+  template_cp "bash_ps.osx.sh" ${ps_file}
 ;;
 ubuntu|debian|centos|RHEL)
   profile=${homepath}/.bashrc
+  template_cp "bash_ps.sh" ${ps_file}
 ;;
 *)
 echo "not yet"; exit 1
@@ -29,4 +31,3 @@ esac
 
 block_append '[ -f ~/.bash_ps ] && . ~/.bash_ps' $profile
 
-template_cp "bash_ps.sh" ${ps_file}
