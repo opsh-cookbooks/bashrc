@@ -13,7 +13,18 @@ global="true"
 log_path=/var/log/bash_history
 
 #make sure enable environment
-block_insert "PermitUserEnvironment yes" /etc/ssh/sshd_config
+case "${node[os]}" in
+osx)
+  sshd_config="/etc/sshd_config";;
+*)
+  sshd_config="/etc/ssh/sshd_config";;
+esac
+  
+if [ -f $sshd_config ]; then
+  block_insert "PermitUserEnvironment yes" $sshd_config;
+else
+  echo "[warning] Can't set 'PermitUserEnvironment yes' in ssh config because it's missing"
+fi
 
 #prepare log directory
 set_permission() {
